@@ -4,17 +4,25 @@ class Turn {
     this.card = card;
   }
   returnGuess() {
-
+    return this.guess;
   }
   returnCard() {
-
+    return this.card
   }
   evaluateGuess() {
-
+    if (this.guess === this.card.correctAnswer) {
+      return true
+    } else {
+      return false;
+    }
   }
   giveFeedback() {
-    
+    if (this.guess === this.card.correctAnswer) {
+      return 'correct'
+    } else {
+      return 'incorrect'
+    }
   }
 }
 
-export default Turn
+module.exports = Turn
