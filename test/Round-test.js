@@ -41,9 +41,9 @@ describe('Round', () => {
     expect(round.turns).to.equal(1)
   })
   it('should remove the first card from the deck after a guess', () => {
-    expect(round.deck[0]).to.equal(card1)
+    expect(round.deck[round.turns]).to.equal(card1)
     round.takeTurn()
-    expect(round.deck[0]).to.equal(card2)
+    expect(round.deck[round.turns]).to.equal(card2)
   })
   it('should put the question id from any incorrect guesses into an array', () => {
     expect(!round.incorrectGuesses)
@@ -51,19 +51,21 @@ describe('Round', () => {
     expect(round.incorrectGuesses[0]).to.equal(1)
   })
   it('should give feedback depending if the answer is correct', () => {
-    round.takeTurn('array')
-    expect(round.takeTurn()).to.equal('incorrect')
-    round.takeTurn('array')
-    expect(round.takeTurn()).to.equal('correct')
+
+    expect(round.takeTurn('array')).to.equal('incorrect')
+
+    expect(round.takeTurn('array')).to.equal('correct')
   })
   it('should create a new turn instance', () => {
     round.takeTurn()
     expect(turn).to.be.instanceof(Turn)
   })
   it('should calculate the percentage of correct guesses', () => {
-    round.takeTurn('object')
-    expect(round.calculatePercentCorrect()).to.equal(100)
-    round.takeTurn('object')
+    round.takeTurn('array')
+    expect(round.calculatePercentCorrect()).to.equal(0)
+    round.takeTurn('array')
     expect(round.calculatePercentCorrect()).to.equal(50)
+    round.takeTurn('mutator method')
+    expect(round.calculatePercentCorrect()).to.equal(67)
   })
 })
