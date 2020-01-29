@@ -44,5 +44,4 @@ describe('Turn', () => {
   it('should give feedback depending on the evaluation', () => {
     expect(turn.giveFeedback()).to.equal('incorrect')
   })
-
 });
