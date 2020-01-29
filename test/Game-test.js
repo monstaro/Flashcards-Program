@@ -15,7 +15,7 @@ describe('Game', function() {
   it('should be a function', function() {
     expect(Game).to.be.a('function');
   });
-  it('should keep track of the current round', () => {
+  it.only('should keep track of the current round', () => {
     
   })
 });
