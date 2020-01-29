@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const Turn = require('../src/Turn');
 
 class Round {
@@ -7,22 +8,26 @@ class Round {
     this.incorrectGuesses = [];
   }
   returnCurrentCard() {
-    return this.deck[0]
+    return this.deck[this.turns]
   }
   takeTurn(guess) {
-    this.turns++
-
     let turn = new Turn(guess, this.returnCurrentCard())
 
     if (!turn.evaluateGuess()) {
       this.incorrectGuesses.push(this.deck[0].id)
     }
 
-    this.deck.shift()
+    this.turns++
+
     return turn.giveFeedback()
   }
   calculatePercentCorrect() {
-    return (this.incorrectGuesses.length / this.turns) * 100
+    let incorrect = this.incorrectGuesses.length
+    return Math.round(((this.turns - incorrect) / this.turns) * 100)
+  }
+  endRound() {
+    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect}% of the questions correctly!`)
+    return `** Round over! ** You answered ${this.calculatePercentCorrect}% of the questions correctly!`
   }
 }
 
