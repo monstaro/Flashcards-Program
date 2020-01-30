@@ -7,15 +7,17 @@ const Round = require('../src/Round.js')
 const Card = require('../src/Card.js')
 
 let round;
+let deck;
 
 class Game {
   constructor() {
-    this.currentRound = null;
+    this.currentRound = 0;
   }
   start() {
-    let deck = new Deck(data.prototypeData)
+    deck = new Deck(data.prototypeData)
+    console.log(deck)
     round = new Round(deck)
-    // this.currentRound = round
+    this.currentRound = round
     this.printMessage(deck, round)
     this.printQuestion(round)
   }

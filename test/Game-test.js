@@ -3,11 +3,14 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Game = require('../src/Game');
+const Round = require('../src/Round');
 
 let game;
+let round;
 
 beforeEach(() => {
-  game = new Game();
+  // round = new Round()
+  game = new Game()
 })
 
 describe('Game', function() {
@@ -15,7 +18,5 @@ describe('Game', function() {
   it('should be a function', function() {
     expect(Game).to.be.a('function');
   });
-  it.only('should keep track of the current round', () => {
-    
-  })
+
 });

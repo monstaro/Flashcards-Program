@@ -1,6 +1,9 @@
 /* eslint-disable no-console */
 const Turn = require('../src/Turn');
 
+const data = require('./data');
+const prototypeQuestions = data.prototypeData;
+
 class Round {
   constructor(deck) {
     this.deck = deck.cards;
@@ -29,6 +32,7 @@ class Round {
   endRound() {
     console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`)
     return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`
+
   }
 }
 
